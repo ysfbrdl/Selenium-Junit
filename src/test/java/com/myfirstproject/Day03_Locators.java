@@ -35,7 +35,7 @@ public class Day03_Locators {
 
 //Create a class : Locators
 //Create test method locators
-//user goes to
+//user goes to "http://a.testaddressbook.com/sign_in"
         driver.get("http://a.testaddressbook.com/sign_in");
 
 //Locate the elements of email textbox, password textbox, and signin button
@@ -54,7 +54,7 @@ public class Day03_Locators {
 //        WebElement signInButton = driver.findElement(By.name("commit")); //2.way
 //        signInButton.click();                                            //2.way
 
-//Then verify that the expected user id  testtechproed@gmail.com (USE getText() method to get the text from the page)
+//Then verify that the expected user id is testtechproed@gmail.com (USE getText() method to get the text from the page)
         //1.Way
         WebElement idElement = driver.findElement(By.className("navbar-text"));
         System.out.println(idElement.getText());//testtechproed@gmail.com
@@ -63,20 +63,27 @@ public class Day03_Locators {
         //2.Way   Alternativly but this below code is not so clear. So we should write understandable codes.
         Assert.assertEquals("testtechproed@gmail.com",driver.findElement(By.className("navbar-text")).getText());
 
+
+
+
+
+
 //Verify the Addresses and Sign Out  texts are displayed
         //Addresses is a link. So I can use linkText or partialLinkText
         driver.findElement(By.linkText("Addresses"));
-        // We can copy and paste link text from webpage by using partialLinkText() method.
-        WebElement addresses = driver.findElement(By.partialLinkText("Addresses"));//same
-        Assert.assertTrue(addresses.isDisplayed());  //isDisplayed() is used to verify is an element is displayed on the page. It returns
+        // We can copy and paste link text from webpage to use partialLinkText() method.
+        WebElement addresses = driver.findElement(By.partialLinkText("Addresses"));  //same
+        Assert.assertTrue(addresses.isDisplayed());  //isDisplayed() is used to verify an element is displayed on the page. It returns
                                                      //true if element is exist, it returns false if element is not exist on the page
-//        driver.findElement(By.partialLinkText("Addresse")); //same
-//        driver.findElement(By.partialLinkText("resses"));   //same
-//        driver.findElement(By.partialLinkText("Add"));      //same
+//        driver.findElement(By.partialLinkText("Addresse"));   //same
+//        driver.findElement(By.partialLinkText("resses"));     //same
+//        driver.findElement(By.partialLinkText("Add"));        //same
 
 //and Sign Out  texts are displayed
         WebElement signOut = driver.findElement(By.partialLinkText("Sign out"));
         Assert.assertTrue(signOut.isDisplayed());
+
+
 
 //Find the number of total link on the page
    //number of link = number of tag
@@ -89,8 +96,13 @@ public class Day03_Locators {
 
 //**After sign out we must do verification to make sure you sign out successfully
 //  if user singed out successfully, it means the url is sign in url : http://a.testaddressbook.com/sign_in
-        boolean isSignedOut = driver.getCurrentUrl().equals("http://a.testaddressbook.com/sign_in");
-        Assert.assertTrue(isSignedOut);
+        //1.Way
+//        boolean isSignedOut1 = driver.getCurrentUrl().equals("http://a.testaddressbook.com/sign_in");
+//        Assert.assertTrue(isSignedOut1);
+        //2.way
+        boolean isSignedOut2 = driver.getCurrentUrl().contains("sign_in");
+        Assert.assertTrue(isSignedOut2);
+
 //       ALTERNATIVELY, we can use a unique element on the sign in page
 //        boolean isSignOut1 = driver.findElement(By.name("commit")).isDisplayed();
 //        Assert.assertTrue(isSignOut1);
@@ -113,7 +125,18 @@ public class Day03_Locators {
          * When is partialLinkText is use full?
          * - if link text is too long
          * - if there is a space before or after the text
+
+
+
          */
+
+
+
+
+
+
+
+
 
     }
 }

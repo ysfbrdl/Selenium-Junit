@@ -14,14 +14,13 @@ public class Day04_ImplicitWait {
         /*
          * implicit wait puts DYNAMIC WAIT meaning wait will be depends on the page speed
          * We can use implicit wait right after creating the driver object
-         * We can use implicit wit once per test. That is enough.
-         * Whenever driver is used, then driver will remember the imlicit wait
-         *
+         * We can use implicit wait once per test. That is enough.
+         * Whenever driver is used, then driver will remember the implicit wait
          * */
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-        driver.get("https://www.google.com");//puts 30 seconds wait IF NEEDED
+        driver.get("https://www.google.com");  //puts 30 seconds wait IF NEEDED
 
-        driver.findElement(By.className("q"));//puts 30 seconds wait ID NEEDED
+        driver.findElement(By.className("q"));  //puts 30 seconds wait IF NEEDED
     }
     @Test
     public void threadSleep() throws InterruptedException {

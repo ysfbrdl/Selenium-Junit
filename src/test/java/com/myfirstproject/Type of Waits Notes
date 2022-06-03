@@ -1,0 +1,29 @@
+1. Hard Wait : Thread.sleep(millisecond)
+Java wait.
+Waits for the given time. NO MORE NO LESS.
+We should avoid using this wait. Avoid especially putting too many hard wait.
+This will make the test execution time longer.
+
+2. Dynamic Wait
+
+Implicit Wait: driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+Selenium wait
+Wait UP TO the given time.
+We should use dynamic wait
+Global wait. When you use implicit wait once, then whenever driver is called, then implicit wait applies.
+
+ExplicitWait:
+Selenium wait. Dynamic wait
+Wait UP TO the given time.
+We should use dynamic wait
+Local wait. We will apply the wait on to the specific elements
+We must create a WebDriverWait object
+This sometime handles wait isse BETTER THAN IMPLICIT WAIT
+Element is not visible
+Element no clickable
+Text not displayed
+….
+Fluent Wait:
+This is a type of Explicit wait.
+We can put polling number.
+We can ignore exception
